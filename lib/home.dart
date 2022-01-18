@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
                           onPressed: () {
                             getImage(ImageSource.camera);
                           },
-                          child: Text("PICK FROM CAMERA"),
+                          child: Text("PICK FROM CAMERA!"),
                         )
                       ],
                     ),
