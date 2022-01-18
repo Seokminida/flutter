@@ -35,6 +35,16 @@ class _HomeState extends State<Home> {
                           height: 40.0,
                         ),
                         RaisedButton(
+                          color: Colors.greenAccent,
+                          onPressed: () {
+                            getImage(ImageSource.gallery);
+                          },
+                          child: Text("test"),
+                        ),
+                        Container(
+                          height: 40.0,
+                        ),
+                        RaisedButton(
                           color: Colors.lightGreenAccent,
                           onPressed: () {
                             getImage(ImageSource.camera);
