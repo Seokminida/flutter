@@ -1,10 +1,12 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+const String _url1 = 'http://ncov.mohw.go.kr/';
+const String _url2 = 'https://www.mohw.go.kr/react/popup_200128.html';
 
 class Home extends StatefulWidget {
-
   @override
   _HomeState createState() => _HomeState();
 }
@@ -14,10 +16,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(''),
-      ),
-      body: Container(
+        appBar: AppBar(
+          title: Text(''),
+        ),
+        body: Container(
             child: _image == null
                 ? Container(
                     alignment: Alignment.center,
@@ -50,7 +52,30 @@ class _HomeState extends State<Home> {
                             getImage(ImageSource.camera);
                           },
                           child: Text("PICK FROM CAMERA!"),
-                        )
+                        ),
+                        Container(
+                          height: 40.0,
+                        ),
+                        RaisedButton(
+                          color: Colors.greenAccent,
+                          onPressed: () {
+                            _launchURL1();
+                          },
+                          child: Text("The current status of COVID-19."),
+                        ),
+                        Container(
+                          height: 40.0,
+                        ),
+                        RaisedButton(
+                          color: Colors.greenAccent,
+                          onPressed: () {
+                            _launchURL2();
+                          },
+                          child: Text("COVID-19 Screening Clinic."),
+                        ),
+                        Container(
+                          height: 40.0,
+                        ),
                       ],
                     ),
                   )
@@ -59,7 +84,7 @@ class _HomeState extends State<Home> {
                       _image!,
                       fit: BoxFit.cover,
                     ),
-                  )));      
+                  )));
   }
 
   Widget showImage() {
@@ -78,6 +103,11 @@ class _HomeState extends State<Home> {
     });
   }
 
+  void _launchURL1() async {
+    if (!await launch(_url1)) throw 'Could not launch $_url1';
+  }
 
+  void _launchURL2() async {
+    if (!await launch(_url2)) throw 'Could not launch $_url2';
+  }
 }
-
